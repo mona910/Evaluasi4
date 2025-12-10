@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tentang Kami - Tik Tak Top Course</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .about-section {
+            padding: 80px 0;
+            background: var(--white);
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            margin-bottom: 60px;
+        }
+        
+        .about-image {
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s;
+        }
+        
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        .about-text h2 {
+            color: var(--blue-dark);
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+            line-height: 1.8;
+            color: var(--text-light);
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-top: 60px;
+        }
+        
+        .stat-card {
+            background: var(--white);
+            padding: 40px 30px;
+            border-radius: var(--radius);
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            border: 2px solid var(--blue-sky);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--blue-medium);
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--blue-medium);
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .stat-text {
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        @media (max-width: 992px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Sama seperti index.html -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo-container">
+                    <img src="img/Lembaga kursus komputer 2.png" alt="Logo" class="logo-icon">
+                    <div>
+                        <div class="logo-text">Tik Tak Top</div>
+                        <div class="logo-subtext">Computer Course Center</div>
+                    </div>
+                </div>
+                
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">
+                            <i class="fas fa-home"></i>
+                            <span>Home</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="about.html" class="nav-link active">
+                            <i class="fas fa-info-circle"></i>
+                            <span>About</span>
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="services.html" class="nav-link">
+                            <i class="fas fa-concierge-bell"></i>
+                            <span>Layanan</span>
+                            <i class="fas fa-chevron-down" style="font-size: 0.9rem;"></i>
+                        </a>
+                        <div class="dropdown-menu">
+                            <a href="services.html#pendaftaran" class="dropdown-item">
+                                <i class="fas fa-user-plus"></i>
+                                Pendaftaran Anggota
+                            </a>
+                            <a href="services.html#informasi" class="dropdown-item">
+                                <i class="fas fa-info-circle"></i>
+                                Informasi Layanan
+                            </a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a href="classes.html" class="nav-link">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                            <span>Kelas</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero hero-with-image" style="background-image: linear-gradient(135deg, rgba(30, 58, 138, 0.75) 0%, rgba(59, 130, 246, 0.75) 100%), url('img/bg jumbotron about.JPG'); background-size: cover; background-position: center; background-repeat: no-repeat; background-color: #3b82f6; padding-bottom: 0;">
+        <div class="hero-content">
+            <h1>Tentang Tik Tak Top</h1>
+            <p>Menciptakan generasi digital yang kompeten dan siap bersaing di era teknologi</p>
+        </div>
+        
+        <!-- SVG Wave (bagian dari hero) -->
+        <div class="svg-wave-inside" style="margin-top: 40px;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none">
+                <path fill="#e0f2fe" fill-opacity="1" d="M0,160L48,170.7C96,181,192,203,288,197.3C384,192,480,160,576,154.7C672,149,768,171,864,181.3C960,192,1056,192,1152,181.3C1248,171,1344,149,1392,138.7L1440,128L1440,320L0,320Z"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- About Content -->
+    <section class="about-section" style="background: #e0f2fe; padding: 80px 0;">
+        <div class="container">
+            <!-- Sejarah Singkat -->
+            <div class="about-content" style="align-items: start; margin-bottom: 40px;">
+                <div class="about-text" style="grid-column: 1 / -1;">
+                    <h2>Sejarah Kami</h2>
+                    <p style="color: var(--text-light);">Didirikan pada 2010 di Yogyakarta oleh Mona bersama empat rekannya — Nanda, Lia, Nisa, dan Alin — Tik Tak Top berawal dari komunitas belajar kecil yang fokus membekali generasi muda dengan keterampilan teknologi praktis.</p>
+                    <p style="color: var(--text-light);">Dalam perjalanan lebih dari satu dekade, tim ini menumbuhkan kurikulum berbasis industri, memperluas jejaring pengajar ahli, dan membantu ribuan siswa membangun portofolio digital yang siap pakai untuk karier profesional.</p>
+                </div>
+            </div>
+
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                         alt="Tik Tak Top Classroom">
+                </div>
+                
+                <div class="about-text">
+                    <h2>Visi</h2>
+                    <p>Menjadi pusat pelatihan teknologi yang unggul dalam membentuk talenta digital berkualitas dan siap bersaing di industri modern.</p>
+                    
+                    <h2 style="margin-top: 30px;">Misi</h2>
+                    <ol style="line-height: 2; color: var(--text-light); padding-left: 20px;">
+                        <li>Menyelenggarakan pelatihan komputer yang relevan dengan kebutuhan industri.</li>
+                        <li>Membekali peserta dengan keterampilan praktis melalui pembelajaran berbasis proyek.</li>
+                        <li>Menciptakan lingkungan belajar yang profesional, adaptif, dan berstandar tinggi.</li>
+                        <li>Mendukung peserta membangun portofolio digital sebagai bekal karier.</li>
+                    </ol>
+                </div>
+            </div>
+            
+            <!-- Stats -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-number">25</span>
+                    <span class="stat-text">Tahun Pengalaman</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">10,000+</span>
+                    <span class="stat-text">Alumni Sukses</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">80+</span>
+                    <span class="stat-text">Pengajar Ahli</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">98%</span>
+                    <span class="stat-text">Kepuasan Siswa</span>
+                </div>
+            </div>
+
+            <!-- Testimoni Alumni -->
+            <div style="margin-top: 70px;">
+                <h2 style="text-align: center; color: var(--blue-dark); font-size: 2.2rem; margin-bottom: 30px; padding-top: 50px;">Testimoni Alumni</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px;">
+                    <div class="testimonial-card" style="background: var(--white); border-radius: 16px; padding: 20px; box-shadow: var(--shadow-md); border: 1px solid var(--blue-sky);">
+                        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+                            <img src="img/natasha rizky.jpg" alt="Natasha Rizky" style="width: 52px; height: 52px; border-radius: 50%; object-fit: cover;">
+                            <div>
+                                <p style="color: var(--text-dark); font-weight: 600; margin: 0;">Natasha Rizky</p>
+                                <p style="color: var(--text-light); font-size: 0.9rem; margin: 0;">Alumni Web Development (2022)</p>
+                            </div>
+                        </div>
+                        <p style="color: var(--text-light); font-size: 0.95rem; margin-bottom: 12px;">Kini Frontend Engineer di startup fintech.</p>
+                        <p style="color: var(--text-dark); font-size: 0.95rem;">“Materi selalu up-to-date, mentor responsif, dan banyak sesi praktik. Portofolio yang saya bangun di sini langsung dipakai saat wawancara kerja.”</p>
+                    </div>
+                    <div class="testimonial-card" style="background: var(--white); border-radius: 16px; padding: 20px; box-shadow: var(--shadow-md); border: 1px solid var(--blue-sky);">
+                        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+                            <img src="img/lee je hoon.jpg" alt="Lee Je Hoon" style="width: 52px; height: 52px; border-radius: 50%; object-fit: cover;">
+                            <div>
+                                <p style="color: var(--text-dark); font-weight: 600; margin: 0;">Lee Je Hoon</p>
+                                <p style="color: var(--text-light); font-size: 0.9rem; margin: 0;">Alumni Data Analysis (2021)</p>
+                            </div>
+                        </div>
+                        <p style="color: var(--text-light); font-size: 0.95rem; margin-bottom: 12px;">Data Analyst di perusahaan logistik.</p>
+                        <p style="color: var(--text-dark); font-size: 0.95rem;">“Belajar langsung pakai studi kasus nyata. Setelah lulus, saya punya dashboard dan laporan yang bisa ditunjukkan ke HR.”</p>
+                    </div>
+                    <div class="testimonial-card" style="background: var(--white); border-radius: 16px; padding: 20px; box-shadow: var(--shadow-md); border: 1px solid var(--blue-sky);">
+                        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+                            <img src="img/IU.avif" alt="IU" style="width: 52px; height: 52px; border-radius: 50%; object-fit: cover;">
+                            <div>
+                                <p style="color: var(--text-dark); font-weight: 600; margin: 0;">IU</p>
+                                <p style="color: var(--text-light); font-size: 0.9rem; margin: 0;">Alumni UI/UX Design (2023)</p>
+                            </div>
+                        </div>
+                        <p style="color: var(--text-light); font-size: 0.95rem; margin-bottom: 12px;">Product Designer freelance.</p>
+                        <p style="color: var(--text-dark); font-size: 0.95rem;">“Mentor membantu revisi portofolio hingga layak kirim ke klien. Komunitas alumninya aktif, banyak project kolaborasi.”</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Sama seperti index.html -->
+    <footer class="footer" style="padding-top: 0;">
+        <!-- SVG Wave (bagian dari footer) -->
+        <div class="svg-wave-inside-footer">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none">
+                <path fill="#e0f2fe" fill-opacity="1" d="M0,0L0,224C80,213,160,203,240,181C320,160,400,128,480,122C560,117,640,139,720,144C800,149,880,139,960,154C1040,171,1120,213,1200,213C1280,213,1360,171,1400,149L1440,128L1440,0L0,0Z"></path>
+            </svg>
+        </div>
+        
+        <div class="container" style="padding-top: 50px;">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Alamat</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Jl. Belajar No. 1</p>
+                    <p>Yogyakarta, Indonesia 12345</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Kontak</h3>
+                    <p><i class="fab fa-whatsapp"></i> 08123459876</p>
+                    <p><i class="fas fa-envelope"></i> tiktaktop@gmail.com</p>
+                    <p><i class="fab fa-instagram"></i> @tiktaktop.official</p>
+                    
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Jam Operasional</h3>
+                    <p><i class="fas fa-clock"></i> Senin - Jumat: 08:00 - 20:00</p>
+                    <p><i class="fas fa-clock"></i> Sabtu: 08:00 - 17:00</p>
+                    <p><i class="fas fa-clock"></i> Minggu: 09:00 - 15:00</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Tik Tak Top Computer Course Center. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

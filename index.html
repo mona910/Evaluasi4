@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tik Tak Top Course - Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Additional styles for Home page */
+        .features-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #e0f2fe 0%, #f0f9ff 100%);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+        
+        .feature-card {
+            background: var(--white);
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(30, 58, 138, 0.1);
+            transition: all 0.4s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--blue-medium), var(--yellow-accent));
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(30, 58, 138, 0.2);
+            border-color: var(--blue-medium);
+        }
+        
+        .feature-card i {
+            font-size: 3.5rem;
+            color: var(--blue-medium);
+            margin-bottom: 25px;
+            display: inline-block;
+            padding: 20px;
+            background: var(--blue-sky);
+            border-radius: 50%;
+        }
+        
+        .feature-card h3 {
+            color: var(--blue-dark);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .feature-card p {
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+        
+        .learning-path-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue-medium) 100%);
+            color: var(--white);
+        }
+        
+        .path-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+            position: relative;
+        }
+        
+        .path-container::before {
+            content: '';
+            position: absolute;
+            top: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 3px;
+            background: var(--yellow-accent);
+            z-index: 1;
+        }
+        
+        .path-step {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: var(--yellow-accent);
+            color: var(--blue-dark);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin: 0 auto 20px;
+            border: 4px solid white;
+        }
+        
+        .path-step h3 {
+            color: var(--white);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        .path-step p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        .cta-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            text-align: center;
+        }
+        
+        .cta-box {
+            background: var(--white);
+            padding: 60px 40px;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(30, 58, 138, 0.15);
+            max-width: 800px;
+            margin: 0 auto;
+            border: 2px solid var(--blue-medium);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23dbeafe" fill-opacity="0.3" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L0,320Z"></path></svg>');
+            background-size: cover;
+            opacity: 0.5;
+        }
+        
+        .cta-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .cta-title {
+            color: var(--blue-dark);
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+        
+        .cta-description {
+            color: var(--text-light);
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--blue-medium) 0%, var(--blue-dark) 100%);
+            color: var(--white);
+            padding: 18px 40px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(59, 130, 246, 0.4);
+            background: linear-gradient(135deg, var(--blue-hover) 0%, #1e40af 100%);
+        }
+        
+        .btn-secondary {
+            background: var(--white);
+            color: var(--blue-dark);
+            padding: 18px 40px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            border: 2px solid var(--blue-medium);
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .btn-secondary:hover {
+            background: var(--blue-sky);
+            transform: translateY(-3px);
+        }
+        
+        .program-highlights {
+            padding: 100px 0;
+            background: var(--white);
+        }
+        
+        .program-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+        
+        .program-card {
+            background: linear-gradient(135deg, var(--blue-sky) 0%, #eff6ff 100%);
+            padding: 30px;
+            border-radius: 20px;
+            border-left: 5px solid var(--blue-medium);
+            transition: all 0.3s;
+        }
+        
+        .program-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(59, 130, 246, 0.2);
+        }
+        
+        .program-card h3 {
+            color: var(--blue-dark);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+        
+        .program-card p {
+            color: var(--text-light);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .program-link {
+            color: var(--blue-medium);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: gap 0.3s;
+        }
+        
+        .program-link:hover {
+            gap: 12px;
+            color: var(--blue-hover);
+        }
+        
+        @media (max-width: 768px) {
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                max-width: 300px;
+                text-align: center;
+                justify-content: center;
+            }
+            
+            .feature-card {
+                padding: 30px 20px;
+            }
+            
+            .cta-box {
+                padding: 40px 20px;
+            }
+            
+            .cta-title {
+                font-size: 2rem;
+            }
+            
+            .path-container::before {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo-container">
+                    <img src="img/Lembaga kursus komputer 2.png" alt="Logo" class="logo-icon">
+                    <div>
+                        <div class="logo-text">Tik Tak Top</div>
+                        <div class="logo-subtext">Computer Course Center</div>
+                    </div>
+                </div>
+                
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link active">
+                            <i class="fas fa-home"></i>
+                            <span>Home</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="about.html" class="nav-link">
+                            <i class="fas fa-info-circle"></i>
+                            <span>About</span>
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="services.html" class="nav-link">
+                            <i class="fas fa-concierge-bell"></i>
+                            <span>Layanan</span>
+                            <i class="fas fa-chevron-down" style="font-size: 0.9rem;"></i>
+                        </a>
+                        <div class="dropdown-menu">
+                            <a href="services.html#pendaftaran" class="dropdown-item">
+                                <i class="fas fa-user-plus"></i>
+                                Pendaftaran Anggota
+                            </a>
+                            <a href="services.html#informasi" class="dropdown-item">
+                                <i class="fas fa-info-circle"></i>
+                                Informasi Layanan
+                            </a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a href="classes.html" class="nav-link">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                            <span>Kelas</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero hero-with-image" style="background-image: linear-gradient(135deg, rgba(30, 58, 138, 0.75) 0%, rgba(59, 130, 246, 0.75) 100%), url('img/bg jumbotron home.JPG');">
+        <div class="hero-content">
+            <h1>Selamat Datang di Tik Tak Top Course</h1>
+            <p>Menguasai keterampilan komputer dengan metode pembelajaran yang interaktif dan modern. Bergabunglah dengan ribuan alumni sukses kami!</p>
+            <div style="margin-top: 40px;">
+                <a href="#features" class="btn-primary" style="margin-right: 15px;">
+                    <i class="fas fa-play-circle"></i>
+                    Mulai Belajar
+                </a>
+                <a href="services.html#pendaftaran" class="btn-secondary">
+                    <i class="fas fa-user-plus"></i>
+                    Daftar Sekarang
+                </a>
+            </div>
+        </div>
+        
+        <!-- SVG Wave -->
+        <div class="svg-wave-inside" style="margin-top: 50px; margin-bottom: -60px;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none" style="height: 160px;">
+                <path fill="#e0f2fe" fill-opacity="1" d="M0,160L48,170.7C96,181,192,203,288,197.3C384,192,480,160,576,154.7C672,149,768,171,864,181.3C960,192,1056,192,1152,181.3C1248,171,1344,149,1392,138.7L1440,128L1440,320L0,320Z"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features-section">
+        <div class="container">
+            <h2 class="section-title">Kenapa Memilih Tik Tak Top?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <h3>Metode Pembelajaran Interaktif</h3>
+                    <p>Belajar dengan metode project-based learning dan hands-on practice untuk pengalaman nyata</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-calendar-check"></i>
+                    <h3>Jadwal Fleksibel</h3>
+                    <p>Pilih kelas pagi, siang, atau malam sesuai dengan waktu luang Anda</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-hands-helping"></i>
+                    <h3>Dukungan Penuh</h3>
+                    <p>Dapatkan bimbingan dari mentor bahkan setelah kelas selesai</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Learning Path Section -->
+    <section class="learning-path-section">
+        <div class="container">
+            <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 20px; color: var(--white);">Alur Pembelajaran</h2>
+            <p style="text-align: center; font-size: 1.2rem; opacity: 0.9; max-width: 700px; margin: 0 auto 50px; color: rgba(255, 255, 255, 0.9);">
+                Ikuti 4 langkah mudah untuk memulai perjalanan belajar Anda
+            </p>
+            
+            <div class="path-container">
+                <div class="path-step">
+                    <div class="step-number">1</div>
+                    <h3>Konsultasi Program</h3>
+                    <p>Diskusikan tujuan belajar dan pilih program yang sesuai dengan minat dan kebutuhan Anda</p>
+                </div>
+                
+                <div class="path-step">
+                    <div class="step-number">2</div>
+                    <h3>Pendaftaran</h3>
+                    <p>Isi formulir pendaftaran dan pilih jadwal kelas yang tersedia</p>
+                </div>
+                
+                <div class="path-step">
+                    <div class="step-number">3</div>
+                    <h3>Proses Belajar</h3>
+                    <p>Ikuti kelas dengan instruktur ahli dan praktik langsung dengan project nyata</p>
+                </div>
+                
+                <div class="path-step">
+                    <div class="step-number">4</div>
+                    <h3>Sertifikasi & Karir</h3>
+                    <p>Dapatkan sertifikat dan bimbingan karir untuk memulai profesi di bidang teknologi</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Program Highlights -->
+    <section class="program-highlights">
+        <div class="container">
+            <h2 class="section-title">Program Unggulan</h2>
+            
+            <div class="program-grid">
+                <div class="program-card">
+                    <h3>Web Programming</h3>
+                    <p>Kuasai pembuatan website dari dasar hingga mahir dengan teknologi terbaru</p>
+                    <a href="classes.html" class="program-link">
+                        Lihat Detail
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <div class="program-card">
+                    <h3>Data Analysis</h3>
+                    <p>Analisis data dengan Python, Excel, dan tools profesional untuk insight bisnis</p>
+                    <a href="classes.html" class="program-link">
+                        Lihat Detail
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <div class="program-card">
+                    <h3>Desain Grafis</h3>
+                    <p>Kreasi visual dengan Adobe Photoshop, Illustrator, dan Figma untuk berbagai media</p>
+                    <a href="classes.html" class="program-link">
+                        Lihat Detail
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <div class="program-card">
+                    <h3>UI/UX Design</h3>
+                    <p>Rancang pengalaman pengguna yang menarik dan fungsional untuk aplikasi digital</p>
+                    <a href="classes.html" class="program-link">
+                        Lihat Detail
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-box">
+                <div class="cta-content">
+                    <h2 class="cta-title">Siap Mengembangkan Skill Digital?</h2>
+                    <p class="cta-description">Bergabunglah dengan komunitas pembelajaran teknologi terbesar di Indonesia. Pilih program yang sesuai dengan minat dan tujuan karir Anda.</p>
+                    
+                    <div class="cta-buttons">
+                        <a href="services.html#pendaftaran" class="btn-primary">
+                            <i class="fas fa-user-plus"></i>
+                            Daftar Sekarang
+                        </a>
+                        <a href="classes.html" class="btn-secondary">
+                            <i class="fas fa-search"></i>
+                            Lihat Kelas Tersedia
+                        </a>
+                    </div>
+                    
+                    <p style="margin-top: 30px; color: var(--text-light); font-size: 0.95rem;">
+                        <i class="fas fa-clock"></i> Kelas baru dimulai setiap bulan | 
+                        <i class="fas fa-graduation-cap"></i> Sertifikat resmi |
+                        <i class="fas fa-briefcase"></i> Bimbingan karir
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" style="padding-top: 0;">
+        <!-- SVG Wave -->
+        <div class="svg-wave-inside-footer">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none">
+                <path fill="#e0f2fe" fill-opacity="1" d="M0,0L0,224C80,213,160,203,240,181C320,160,400,128,480,122C560,117,640,139,720,144C800,149,880,139,960,154C1040,171,1120,213,1200,213C1280,213,1360,171,1400,149L1440,128L1440,0L0,0Z"></path>
+            </svg>
+        </div>
+        
+        <div class="container" style="padding-top: 50px;">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Alamat</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Jl. Teknologi No. 123</p>
+                    <p>Yogyakarta, Indonesia 55281</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Kontak</h3>
+                    <p><i class="fab fa-whatsapp"></i> 0812-3456-7890</p>
+                    <p><i class="fas fa-envelope"></i> info@tiktaktop.com</p>
+                    <p><i class="fab fa-instagram"></i> @tiktaktop.official</p>
+                    
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Jam Operasional</h3>
+                    <p><i class="fas fa-clock"></i> Senin - Jumat: 08:00 - 20:00</p>
+                    <p><i class="fas fa-clock"></i> Sabtu: 08:00 - 17:00</p>
+                    <p><i class="fas fa-clock"></i> Minggu: 09:00 - 15:00</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Tik Tak Top Computer Course Center. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId !== '#') {
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }
+            });
+        });
+        
+        // Add hover effect to program cards
+        document.querySelectorAll('.program-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px)';
+                this.style.boxShadow = '0 20px 40px rgba(59, 130, 246, 0.3)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+                this.style.boxShadow = '0 15px 30px rgba(59, 130, 246, 0.2)';
+            });
+        });
+    </script>
+</body>
+</html>

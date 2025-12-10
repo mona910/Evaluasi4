@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layanan - Tik Tak Top Course</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Additional styles for Services page */
+        .services-section {
+            padding: 80px 0;
+        }
+        
+        .service-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 50px 40px;
+            box-shadow: var(--shadow-md);
+            margin-bottom: 40px;
+            border-left: 5px solid var(--blue-medium);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+            border-left-color: var(--yellow-accent);
+        }
+        
+        .service-icon {
+            font-size: 3rem;
+            color: var(--blue-medium);
+            margin-bottom: 25px;
+            display: inline-block;
+            padding: 20px;
+            background: var(--blue-sky);
+            border-radius: 50%;
+        }
+        
+        .service-card h3 {
+            color: var(--blue-dark);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+        
+        .service-list {
+            list-style: none;
+            margin: 25px 0;
+        }
+        
+        .service-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid var(--gray-light);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .service-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .service-list i {
+            color: var(--yellow-accent);
+        }
+        
+        .info-section {
+            background: #e0f2fe;
+            padding: 80px 0;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .info-card {
+            background: var(--white);
+            padding: 40px 30px;
+            border-radius: var(--radius);
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            transition: transform 0.3s;
+        }
+        
+        .info-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .info-card i {
+            font-size: 3rem;
+            color: var(--blue-medium);
+            margin-bottom: 20px;
+        }
+        
+        .info-card h4 {
+            color: var(--blue-dark);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--blue-medium) 0%, var(--blue-dark) 100%);
+            color: var(--white);
+            padding: 15px 35px;
+            border-radius: var(--radius);
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: all 0.3s;
+        }
+        
+        .cta-button:hover {
+            background: linear-gradient(135deg, var(--blue-hover) 0%, var(--dark-blue) 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+        }
+        
+        /* Form Styles (copied from index.html) */
+        .form-section {
+            padding: 0 0 90px 0;
+            background: #e0f2fe;
+        }
+        
+        .form-wrapper {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            border-radius: 20px;
+            box-shadow: 
+                0 15px 40px rgba(30, 58, 138, 0.12),
+                0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+            padding: 40px;
+            max-width: 680px;
+            margin: 0 auto;
+            border: 2px solid transparent;
+            background-image: 
+                linear-gradient(135deg, #ffffff 0%, #f8fafc 100%),
+                linear-gradient(135deg, var(--blue-medium), var(--blue-hover));
+            background-origin: border-box;
+            background-clip: padding-box, border-box;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .form-wrapper:hover {
+            box-shadow: 
+                0 25px 70px rgba(30, 58, 138, 0.2),
+                0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+            transform: translateY(-2px);
+        }
+        
+        .form-group {
+            margin-bottom: 28px;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 10px;
+            color: var(--blue-dark);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        .form-label span {
+            color: #ef4444;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 16px 20px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            font-size: 1.05rem;
+            transition: all 0.3s;
+            background: #ffffff;
+            color: var(--text-dark);
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: var(--blue-medium);
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15);
+            background: #f8fafc;
+        }
+        
+        select.form-input {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%231e3a8a'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 20px center;
+            background-size: 24px;
+            padding-right: 50px;
+        }
+        
+        textarea.form-input {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .form-submit {
+            display: block;
+            width: 100%;
+            background: linear-gradient(135deg, var(--blue-medium) 0%, var(--blue-dark) 100%);
+            color: var(--white);
+            padding: 18px 40px;
+            border: none;
+            border-radius: var(--radius);
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 20px;
+            letter-spacing: 0.5px;
+        }
+        
+        .form-submit:hover {
+            background: linear-gradient(135deg, var(--blue-hover) 0%, #1e40af 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.4);
+        }
+        
+        .message {
+            padding: 18px 25px;
+            border-radius: var(--radius);
+            margin: 25px 0;
+            display: none;
+            font-weight: 500;
+        }
+        
+        .message.success {
+            background: #d1fae5;
+            color: #065f46;
+            border: 2px solid #a7f3d0;
+            display: block;
+        }
+        
+        .message.error {
+            background: #fee2e2;
+            color: #991b1b;
+            border: 2px solid #fecaca;
+            display: block;
+        }
+        
+        .message.info {
+            background: #dbeafe;
+            color: var(--blue-dark);
+            border: 2px solid var(--blue-light);
+            display: block;
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            animation: fadeIn 0.3s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .modal-content {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            margin: 5% auto;
+            padding: 40px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 600px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            position: relative;
+            animation: slideDown 0.3s;
+        }
+        
+        @keyframes slideDown {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 32px;
+            font-weight: bold;
+            cursor: pointer;
+            line-height: 1;
+            transition: color 0.3s;
+        }
+        
+        .close:hover {
+            color: var(--blue-dark);
+        }
+        
+        #modalBody h3 {
+            color: var(--blue-dark);
+            font-size: 2rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        #modalBody h3 i {
+            color: var(--blue-medium);
+            font-size: 2.5rem;
+        }
+        
+        #modalBody p {
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+        
+        #modalBody ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        #modalBody ul li {
+            padding: 10px 0;
+            border-bottom: 1px solid var(--blue-sky);
+            color: var(--text-dark);
+        }
+        
+        #modalBody ul li:last-child {
+            border-bottom: none;
+        }
+        
+        #modalBody ul li i {
+            color: var(--blue-medium);
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo-container">
+                    <img src="img/Lembaga kursus komputer 2.png" alt="Logo" class="logo-icon">
+                    <div>
+                        <div class="logo-text">Tik Tak Top</div>
+                        <div class="logo-subtext">Computer Course Center</div>
+                    </div>
+                </div>
+                
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">
+                            <i class="fas fa-home"></i>
+                            <span>Home</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="about.html" class="nav-link">
+                            <i class="fas fa-info-circle"></i>
+                            <span>About</span>
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="services.html" class="nav-link active">
+                            <i class="fas fa-concierge-bell"></i>
+                            <span>Layanan</span>
+                            <i class="fas fa-chevron-down" style="font-size: 0.9rem;"></i>
+                        </a>
+                        <div class="dropdown-menu">
+                            <a href="#pendaftaran" class="dropdown-item">
+                                <i class="fas fa-user-plus"></i>
+                                Pendaftaran Anggota
+                            </a>
+                            <a href="#informasi" class="dropdown-item">
+                                <i class="fas fa-info-circle"></i>
+                                Informasi Layanan
+                            </a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a href="classes.html" class="nav-link">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                            <span>Kelas</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero hero-with-image" style="background-image: linear-gradient(135deg, rgba(30, 58, 138, 0.75) 0%, rgba(59, 130, 246, 0.75) 100%), url('img/bg jumbotron layanan.JPG');">
+        <div class="hero-content">
+            <h1>Layanan Kami</h1>
+            <p>Solusi lengkap untuk kebutuhan pendidikan teknologi Anda</p>
+        </div>
+        
+        <!-- SVG Wave -->
+        <div class="svg-wave-inside" style="margin-top: 40px;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none">
+                <path fill="#e0f2fe" fill-opacity="1" d="M0,160L48,170.7C96,181,192,203,288,197.3C384,192,480,160,576,154.7C672,149,768,171,864,181.3C960,192,1056,192,1152,181.3C1248,171,1344,149,1392,138.7L1440,128L1440,320L0,320Z"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Pendaftaran Anggota SECTION WITH FORM -->
+    <section id="pendaftaran" class="form-section">
+        <div class="container">
+            <h2 class="section-title">Formulir Pendaftaran Anggota</h2>
+            <p style="text-align: center; color: var(--text-light); max-width: 700px; margin: 0 auto 50px; font-size: 1.1rem;">
+                Isi formulir berikut untuk mendaftar sebagai anggota Tik Tak Top. Setelah mendaftar, Anda akan mendapatkan akses ke semua fasilitas dan program kami.
+            </p>
+            
+            <div class="form-wrapper">
+                <form id="registrationForm">
+                    <!-- KOLOM 1: Nama Lengkap -->
+                    <div class="form-group">
+                        <label for="nama" class="form-label">
+                            <span>*</span> Nama Lengkap
+                        </label>
+                        <input type="text" id="nama" name="nama" class="form-input" 
+                               placeholder="Masukkan nama lengkap" required>
+                    </div>
+                    
+                    <!-- KOLOM 2: Program Kursus -->
+                    <div class="form-group">
+                        <label for="program" class="form-label">
+                            <span>*</span> Program Kursus
+                        </label>
+                        <select id="program" name="program" class="form-input" required>
+                            <option value="">Pilih Program Kursus</option>
+                            <option value="Desain Grafis">Desain Grafis</option>
+                            <option value="Web Programming">Web Programming</option>
+                            <option value="Data Analysis">Data Analysis</option>
+                            <option value="Python Pemula">Python Pemula</option>
+                            <option value="Excel untuk Data">Excel untuk Data</option>
+                            <option value="UI/UX Design">UI/UX Design</option>
+                        </select>
+                    </div>
+                    
+                    <!-- KOLOM 3: NIK / Nomor Induk Siswa -->
+                    <div class="form-group">
+                        <label for="nik" class="form-label">
+                            <span>*</span> NIK / Nomor Induk Siswa
+                        </label>
+                        <input type="text" id="nik" name="nik" class="form-input" 
+                               placeholder="16 digit NIK" required maxlength="16">
+                    </div>
+                    
+                    <!-- KOLOM 4: Alamat -->
+                    <div class="form-group">
+                        <label for="alamat" class="form-label">
+                            <span>*</span> Alamat Lengkap
+                        </label>
+                        <textarea id="alamat" name="alamat" class="form-input" 
+                                  placeholder="Masukkan alamat lengkap" required rows="4"></textarea>
+                    </div>
+                    
+                    <!-- KOLOM 5: Nomor WhatsApp -->
+                    <div class="form-group">
+                        <label for="whatsapp" class="form-label">
+                            <span>*</span> Nomor WhatsApp
+                        </label>
+                        <input type="tel" id="whatsapp" name="whatsapp" class="form-input" 
+                               placeholder="Contoh: 081234567890" required>
+                        <small style="color: var(--text-light); margin-top: 5px; display: block;">
+                            * Nomor ini akan digunakan untuk konfirmasi pendaftaran
+                        </small>
+                    </div>
+                    
+                    <button type="submit" class="form-submit">
+                        <i class="fas fa-paper-plane"></i>
+                        Kirim Pendaftaran
+                    </button>
+                </form>
+                
+                <!-- Status Message -->
+                <div id="message" class="message"></div>
+                
+                <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid var(--blue-sky);">
+                    <p style="color: var(--text-light); font-size: 0.95rem; text-align: center;">
+                        <i class="fas fa-info-circle"></i> Setelah mengisi formulir, tim kami akan menghubungi Anda dalam 1x24 jam untuk konfirmasi dan informasi selanjutnya.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Informasi Layanan -->
+    <section id="informasi" class="info-section">
+        <div class="container">
+            <h2 class="section-title">Informasi Layanan</h2>
+            <p style="text-align: center; color: var(--text-light); max-width: 700px; margin: 0 auto 50px; font-size: 1.1rem;">
+                Temukan berbagai layanan yang kami sediakan untuk mendukung perjalanan belajar Anda
+            </p>
+            
+            <div class="info-grid">
+                <div class="info-card" onclick="showModal('tatap-muka')" style="cursor: pointer;">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <h4>Kelas Tatap Muka</h4>
+                    <p>Belajar langsung dengan instruktur di ruang kelas modern dengan fasilitas lengkap.</p>
+                </div>
+                
+                <div class="info-card" onclick="showModal('online')" style="cursor: pointer;">
+                    <i class="fas fa-laptop-house"></i>
+                    <h4>Kelas Online</h4>
+                    <p>Fleksibel belajar dari rumah dengan materi interaktif dan live session.</p>
+                </div>
+                
+                <div class="info-card" onclick="showModal('sertifikasi')" style="cursor: pointer;">
+                    <i class="fas fa-certificate"></i>
+                    <h4>Sertifikasi</h4>
+                    <p>Dapatkan sertifikat resmi yang diakui industri setelah menyelesaikan program.</p>
+                </div>
+                
+                <div class="info-card" onclick="showModal('konsultasi')" style="cursor: pointer;">
+                    <i class="fas fa-briefcase"></i>
+                    <h4>Konsultasi Karir</h4>
+                    <p>Bimbingan karir dan koneksi dengan perusahaan mitra untuk peluang kerja.</p>
+                </div>
+                
+                <div class="info-card" onclick="showModal('materi')" style="cursor: pointer;">
+                    <i class="fas fa-book"></i>
+                    <h4>Materi Digital</h4>
+                    <p>Akses ke koleksi materi digital lengkap dan terupdate.</p>
+                </div>
+                
+                <div class="info-card" onclick="showModal('komunitas')" style="cursor: pointer;">
+                    <i class="fas fa-users"></i>
+                    <h4>Komunitas</h4>
+                    <p>Bergabung dengan komunitas alumni dan profesional di bidang teknologi.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal -->
+    <div id="serviceModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer" style="padding-top: 0;">
+        <!-- SVG Wave -->
+        <div class="svg-wave-inside-footer">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none">
+                <path fill="#e0f2fe" fill-opacity="1" d="M0,0L0,224C80,213,160,203,240,181C320,160,400,128,480,122C560,117,640,139,720,144C800,149,880,139,960,154C1040,171,1120,213,1200,213C1280,213,1360,171,1400,149L1440,128L1440,0L0,0Z"></path>
+            </svg>
+        </div>
+        
+        <div class="container" style="padding-top: 50px;">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Alamat</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Jl. Teknologi No. 123</p>
+                    <p>Yogyakarta, Indonesia 55281</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Kontak</h3>
+                    <p><i class="fab fa-whatsapp"></i> 0812-3456-7890</p>
+                    <p><i class="fas fa-envelope"></i> info@tiktaktop.com</p>
+                    <p><i class="fab fa-instagram"></i> @tiktaktop.official</p>
+                    
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Jam Operasional</h3>
+                    <p><i class="fas fa-clock"></i> Senin - Jumat: 08:00 - 20:00</p>
+                    <p><i class="fas fa-clock"></i> Sabtu: 08:00 - 17:00</p>
+                    <p><i class="fas fa-clock"></i> Minggu: 09:00 - 15:00</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Tik Tak Top Computer Course Center. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="script.js"></script>
+    <script>
+        const modalData = {
+            'tatap-muka': {
+                title: '<i class="fas fa-chalkboard-teacher"></i>Kelas Tatap Muka',
+                content: `
+                    <p>Belajar langsung dengan instruktur profesional di ruang kelas modern yang dilengkapi dengan fasilitas terbaik.</p>
+                    <h4 style="color: var(--blue-dark); margin-top: 20px;">Keunggulan:</h4>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i>Interaksi langsung dengan instruktur dan sesama peserta</li>
+                        <li><i class="fas fa-check-circle"></i>Ruang kelas ber-AC dengan komputer spesifikasi tinggi</li>
+                        <li><i class="fas fa-check-circle"></i>Praktik hands-on dengan project nyata</li>
+                        <li><i class="fas fa-check-circle"></i>Networking dengan profesional industri</li>
+                        <li><i class="fas fa-check-circle"></i>Jadwal fleksibel (pagi, siang, malam)</li>
+                    </ul>
+                `
+            },
+            'online': {
+                title: '<i class="fas fa-laptop-house"></i>Kelas Online',
+                content: `
+                    <p>Fleksibilitas belajar dari mana saja dengan materi interaktif dan live session berkualitas.</p>
+                    <h4 style="color: var(--blue-dark); margin-top: 20px;">Fasilitas:</h4>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i>Live session via Zoom dengan instruktur berpengalaman</li>
+                        <li><i class="fas fa-check-circle"></i>Rekaman kelas yang bisa diakses kapan saja</li>
+                        <li><i class="fas fa-check-circle"></i>Materi pembelajaran digital lengkap</li>
+                        <li><i class="fas fa-check-circle"></i>Forum diskusi online 24/7</li>
+                        <li><i class="fas fa-check-circle"></i>Tugas dan project yang dikerjakan dari rumah</li>
+                    </ul>
+                `
+            },
+            'sertifikasi': {
+                title: '<i class="fas fa-certificate"></i>Sertifikasi',
+                content: `
+                    <p>Dapatkan sertifikat resmi yang diakui industri setelah menyelesaikan program kursus.</p>
+                    <h4 style="color: var(--blue-dark); margin-top: 20px;">Jenis Sertifikat:</h4>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i>Sertifikat Kelulusan dari Tik Tak Top</li>
+                        <li><i class="fas fa-check-circle"></i>Sertifikat Kompetensi Nasional</li>
+                        <li><i class="fas fa-check-circle"></i>International Certificate Partnership</li>
+                        <li><i class="fas fa-check-circle"></i>Portfolio Project untuk Lamaran Kerja</li>
+                        <li><i class="fas fa-check-circle"></i>Recommendation Letter untuk Top Performers</li>
+                    </ul>
+                `
+            },
+            'konsultasi': {
+                title: '<i class="fas fa-briefcase"></i>Konsultasi Karir',
+                content: `
+                    <p>Bimbingan karir profesional dan koneksi dengan perusahaan mitra untuk peluang kerja terbaik.</p>
+                    <h4 style="color: var(--blue-dark); margin-top: 20px;">Layanan:</h4>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i>Konsultasi karir one-on-one dengan career advisor</li>
+                        <li><i class="fas fa-check-circle"></i>Review CV dan portfolio profesional</li>
+                        <li><i class="fas fa-check-circle"></i>Simulasi interview dan tips lolos seleksi</li>
+                        <li><i class="fas fa-check-circle"></i>Job matching dengan 200+ perusahaan partner</li>
+                        <li><i class="fas fa-check-circle"></i>Info lowongan kerja eksklusif untuk alumni</li>
+                    </ul>
+                `
+            },
+            'materi': {
+                title: '<i class="fas fa-book"></i>Materi Digital',
+                content: `
+                    <p>Akses ke koleksi materi digital lengkap dan selalu terupdate dengan teknologi terbaru.</p>
+                    <h4 style="color: var(--blue-dark); margin-top: 20px;">Konten:</h4>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i>E-book dan modul pembelajaran interaktif</li>
+                        <li><i class="fas fa-check-circle"></i>Video tutorial HD berkualitas tinggi</li>
+                        <li><i class="fas fa-check-circle"></i>Source code dan template project</li>
+                        <li><i class="fas fa-check-circle"></i>Quiz dan latihan soal online</li>
+                        <li><i class="fas fa-check-circle"></i>Update materi setiap bulan sesuai trend industri</li>
+                    </ul>
+                `
+            },
+            'komunitas': {
+                title: '<i class="fas fa-users"></i>Komunitas',
+                content: `
+                    <p>Bergabung dengan komunitas alumni dan profesional aktif di bidang teknologi.</p>
+                    <h4 style="color: var(--blue-dark); margin-top: 20px;">Benefit:</h4>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i>Grup WhatsApp & Telegram Alumni 10,000+ members</li>
+                        <li><i class="fas fa-check-circle"></i>Monthly meetup dan tech talk dengan expert</li>
+                        <li><i class="fas fa-check-circle"></i>Kolaborasi project freelance dengan sesama alumni</li>
+                        <li><i class="fas fa-check-circle"></i>Networking event dengan perusahaan tech</li>
+                        <li><i class="fas fa-check-circle"></i>Mentorship program dari senior alumni</li>
+                    </ul>
+                `
+            }
+        };
+        
+        function showModal(type) {
+            const modal = document.getElementById('serviceModal');
+            const modalBody = document.getElementById('modalBody');
+            const data = modalData[type];
+            
+            modalBody.innerHTML = `
+                <h3>${data.title}</h3>
+                ${data.content}
+            `;
+            
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModal() {
+            const modal = document.getElementById('serviceModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('serviceModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+        
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const targetId = this.getAttribute('href');
+                if (targetId !== '#') {
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        e.preventDefault();
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
