@@ -297,6 +297,7 @@ body {
     display: block;
     width: 100%;
     height: auto;
+    aspect-ratio: 1440 / 320;
     margin: 0;
     padding: 0;
 }
@@ -305,7 +306,7 @@ body {
 @media (max-width: 480px) {
     .svg-wave-inside {
         margin-top: 25px;
-        margin-bottom: -20px;
+        margin-bottom: -15px;
     }
 }
 
@@ -313,7 +314,7 @@ body {
 @media (min-width: 481px) and (max-width: 768px) {
     .svg-wave-inside {
         margin-top: 35px;
-        margin-bottom: -30px;
+        margin-bottom: -25px;
     }
 }
 
