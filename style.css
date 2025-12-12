@@ -295,18 +295,20 @@ body {
 .svg-wave-inside svg {
     position: relative;
     display: block;
-    width: calc(100% + 20px);
+    width: calc(100% + 1.3px);
     height: 220px;
-    margin: 0 -10px;
+    margin: 0 -0.6px;
     padding: 0;
 }
 
 @media (max-width: 768px) {
     .svg-wave-inside svg {
-        height: 60px;
+        height: 40px;
+        width: calc(100% + 1.3px);
     }
     .svg-wave-inside {
-        margin-top: 30px;
+        margin-top: 20px;
+        margin-bottom: -50px;
     }
 }
 
