@@ -1,5 +1,5 @@
 // Konfigurasi Google Apps Script
-const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyU6fBN36dWiwvIEHkQAkaDpJjdqRomuECR3pTJt661MbGqF_9s8SDowJ5GS4s_8cOYhg/exec'; 
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwOLkYgO1fIpOn-6AhTz773eDnacUF43b_eObHGIsp7Qlfve5-v6U7LXZp1-0D_V0198g/exec'; 
 
 // Inisialisasi
 document.addEventListener('DOMContentLoaded', function() {
@@ -81,7 +81,7 @@ function validateProgram(program) {
 }
 
 function validateNIK(nik) {
-    return /^\d{16}$/.test(nik);
+    return /^\d+$/.test(nik) && nik.length >= 8;
 }
 
 function validateAddress(address) {
@@ -169,7 +169,7 @@ function getErrorMessage(fieldId) {
     const messages = {
         'nama': 'Nama harus 3-50 karakter',
         'program': 'Pilih program kursus',
-        'nik': 'NIK harus 16 digit angka',
+        'nik': 'NIK hanya angka, minimal 8 digit',
         'alamat': 'Alamat harus 10-200 karakter',
         'whatsapp': 'Nomor WhatsApp tidak valid'
     };
