@@ -306,7 +306,11 @@ body {
 @media (max-width: 480px) {
     .svg-wave-inside {
         margin-top: 25px;
-        margin-bottom: -4px;
+        margin-bottom: -50px;
+    }
+    .svg-wave-inside svg {
+        transform: scaleY(1.2);
+        margin-bottom: -10px;
     }
 }
 
@@ -314,7 +318,11 @@ body {
 @media (min-width: 481px) and (max-width: 768px) {
     .svg-wave-inside {
         margin-top: 35px;
-        margin-bottom: -3px;
+        margin-bottom: -40px;
+    }
+    .svg-wave-inside svg {
+        transform: scaleY(1.1);
+        margin-bottom: -5px;
     }
 }
 
