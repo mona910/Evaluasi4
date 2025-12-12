@@ -295,26 +295,28 @@ body {
 .svg-wave-inside svg {
     position: relative;
     display: block;
-    width: calc(100% + 1.3px);
-    height: 220px;
-    margin: 0 -0.6px;
+    width: 100%;
+    height: auto;
+    margin: 0;
     padding: 0;
 }
 
 @media (max-width: 768px) {
     .svg-wave-inside svg {
-        height: 40px;
-        width: calc(100% + 1.3px);
+        height: auto;
     }
     .svg-wave-inside {
-        margin-top: 20px;
+        margin-top: 30px;
         margin-bottom: -50px;
     }
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
     .svg-wave-inside svg {
-        height: 90px;
+        height: auto;
+    }
+    .svg-wave-inside {
+        margin-bottom: -70px;
     }
 }
 
